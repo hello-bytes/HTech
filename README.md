@@ -6,7 +6,7 @@
 
 我的个人博客[Hello-Tech](http://www.hellotech.mobi)即是使用此网站代码部署。
 
-效果图：![Hello-Tech](https://github.com/shishengyi/HelloTech/raw/dev/doc/images/hellotech-blog-screenshot.png)
+效果图：![Hello-Tech](https://github.com/Hello-Tech/HelloTech/raw/dev/doc/images/hellotech-blog-screenshot.png)
 
 # 2 部署
 
