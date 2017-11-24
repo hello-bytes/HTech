@@ -15,27 +15,15 @@ CREATE TABLE `article` (
 DROP TABLE IF EXISTS  `article_status`;
 CREATE TABLE `article_status` (
   `id` INTEGER PRIMARY KEY AUTOINCREMENT,
-  `art_id` int(11) NOT NULL,
-  `state` int(11) NOT NULL,
+  `art_id` int(11) NOT NULL DEFAULT '0',
+  `state` int(11) NOT NULL DEFAULT '0',
   `view_number` int(11) NOT NULL DEFAULT '0'
-);
-
-DROP TABLE IF EXISTS  `categories`;
-CREATE TABLE `categories` (
-  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
-  `created_at` timestamp NOT NULL DEFAULT 0,
-  `updated_at` timestamp NOT NULL DEFAULT 0
 );
 
 DROP TABLE IF EXISTS  `category`;
 CREATE TABLE `category` (
   `id` INTEGER PRIMARY KEY AUTOINCREMENT,
-  `cate_name` varchar(255) NOT NULL,
-  `as_name` varchar(255) NOT NULL,
-  `parent_id` int(11) NOT NULL DEFAULT '0',
-  `seo_title` varchar(255) NOT NULL,
-  `seo_key` varchar(255) NOT NULL,
-  `seo_desc` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT 0,
   `updated_at` timestamp NOT NULL DEFAULT 0
 );
@@ -75,6 +63,8 @@ CREATE TABLE `systems` (
   `system_name` varchar(255)  NOT NULL,
   `system_value` varchar(255)  NOT NULL
 );
+INSERT INTO systems(cate,system_name,system_value) VALUES(1,"标题","HelloTech");
+INSERT INTO systems(cate,system_name,system_value) VALUES(1,"备案","CN - 1986");
 
 DROP TABLE IF EXISTS  `tags`;
 CREATE TABLE `tags` (

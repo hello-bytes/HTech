@@ -32,4 +32,16 @@ class System extends Model
         return self::select('system_value')->where('system_name', $field)->pluck('system_value');
     }
 
+    public static function getSystemSetting()
+    {
+        $result = array();
+        $settings = self::where('cate',1)->get();
+
+        foreach($settings as $item){
+            array_push($result,array("k" => $item->system_name,"v" => $item->system_value));
+        }
+
+        return $result;
+    }
+
 }

@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Uranus') }}</title>
+    <title>{{ postTitle() }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -21,8 +21,9 @@
         ]) !!};
     </script>
 
-    <link href="/backend/css/style.css?v=1.0.1005" rel="stylesheet">
+    <link href="/backend/css/style.css?v=1.0.1025" rel="stylesheet">
     <link href="/backend/css/style-responsive.css" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('/backend/plugin/jquery-1.9.1.js') }}"></script>
 
 </head>
 <?php
@@ -53,11 +54,12 @@ function smartNavigateActive($controller,$action){
     <div class="left-side sticky-left-side">
         <!--logo and iconic logo start-->
         <div class="logo" style="padding-bottom:10px;padding-top:10px;height: 60px;">
-            <a href="/"><img src="/backend/image/logo.png" alt="" width="200px"></a>
+            <a href="/"><img src="/backend/images/logo.png" alt="" width="200px"></a>
         </div>
         <div class="left-side-inner">
             <ul class="nav nav-pills nav-stacked custom-nav" style="margin-top: 0px;padding-top: 0px;">
                 <li class="<?php smartNavigateActive("BackendController","") ?>"><a href="/backend/index"><i class="fa fa-home"></i> <span>系统概况</span></a></li>
+                <li class="<?php smartNavigateActive("UserController","") ?>"><a href="/backend/user"><i class="fa fa-user"></i> <span>用户管理</span></a></li>
                 <li class="menu-list <?php smartGroupActive("ArticleController") ?> <?php smartNavigateActive("CategoryController","") ?> <?php smartNavigateActive("TagController","") ?>"><a href=""><i class="fa fa-laptop"></i><span>内容管理</span></a>
                     <ul class="sub-menu-list">
                         <li class="<?php smartNavigateActive("ArticleController","") ?>"><a href="/backend/article">文章管理</a></li>
@@ -65,7 +67,6 @@ function smartNavigateActive($controller,$action){
                         <li class="<?php smartNavigateActive("TagController","") ?>"><a href="/backend/tag">标签管理</a></li>
                     </ul>
                 </li>
-                <li class="<?php smartGroupActive("UserController") ?>"><a href="/backend/user"><i class="fa fa-laptop"></i><span>用户管理</span></a></li>
                 <li class="menu-list <?php smartGroupActive("SystemSettingController") ?>"><a href=""><i class="fa fa-bolt"></i><span>系统设置</span></a>
                     <ul class="sub-menu-list">
                         <li class="<?php smartNavigateActive("SystemSettingController","") ?>"><a href="/backend/setting">基本设置</a></li>
@@ -141,6 +142,6 @@ function smartNavigateActive($controller,$action){
 <script src="https://oss-cn-hangzhou.aliyuncs.com/codingsky/cdn/uranus/js/scripts.js?v=1.0.1003"></script>
 
 @yield('footer')
-
+@yield('javascript')
 </body>
 </html>

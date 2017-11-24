@@ -6,9 +6,10 @@
  * Time: 上午11:37
  */
 
-use Illuminate\Routing\Controller as BaseController;
+use App\User;
+use App\Http\Controllers\Controller;
 
-class UserController extends BaseController{
+class UserController extends Controller{
 
     /**
      * Create a new controller instance.
@@ -23,5 +24,30 @@ class UserController extends BaseController{
     public function index(){
         $users = \DB::table('users')->paginate(15);
         return view("backend.user.index")->with("users",$users);
+    }
+
+    public function create(){
+        return view('backend.user.create');
+    }
+
+    public function store()
+    {
+        $name = $this->queryString("name","");
+        $email = $this->queryString("email","");
+        $password = $this->queryString("password","");
+        $data = array(
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+        );
+
+        if (User::create($data)) {
+            return redirect('/backend/user');
+        }
+    }
+
+    public function destroy($id){
+        Tag::destroy([$id]);
+        return redirect('/backend/user');
     }
 }

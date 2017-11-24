@@ -19,7 +19,7 @@ class ArticleStatus extends Model {
     }
 
     public static function initArticleStatus($articleId){
-        if(self::insert(array('art_id'=>$articleId))){
+        if(self::insert(array('art_id'=>$articleId,'view_number' => 0))){
             return true;
         }else{
             return false;

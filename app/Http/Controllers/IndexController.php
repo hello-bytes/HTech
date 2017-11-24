@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Http\Controllers;
 /**
  * Created by PhpStorm.
  * User: shishengyi
@@ -6,21 +6,12 @@
  * Time: 上午12:58
  */
 
-namespace App\Http\Controllers;
-
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Model\Article;
 
-class IndexController extends BaseController
+class IndexController extends Controller
 {
     public function index(){
-        $article = Article::getNewsArticle(8);
-        //print_r($article);
-        //echo count($article['data']);
-        //$page = new EndaPage($article['page']);
+        $article = Article::getNewsArticle(15);
         return view("index.index")->with("articleList",$article)->with("page",0);
     }
 }

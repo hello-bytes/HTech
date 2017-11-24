@@ -6,9 +6,10 @@
  * Time: 上午11:38
  */
 
-use Illuminate\Routing\Controller as BaseController;
+use App\Model\System;
+use App\Http\Controllers\Controller;
 
-class SystemSettingController extends BaseController{
+class SystemSettingController extends Controller{
 
     /**
      * Create a new controller instance.
@@ -21,7 +22,33 @@ class SystemSettingController extends BaseController{
     }
 
     public function index(){
-        return view("backend.setting.index");
+        $settings = \DB::table('systems')->paginate(15);
+        return view("backend.setting.index")->with("settings",$settings);
     }
 
+    public function edit($id){
+        $setting = System::find($id);
+        if($setting == null){
+            $this->notFound();
+        }
+        return view('backend.setting.edit')->with("setting",$setting);
+    }
+
+    public function update($id){
+        $setting = System::find($id);
+
+        $val = $this->queryString("system_value","");
+
+        $data = array(
+            'system_name' => $setting->system_name,
+            'system_value' => $val
+        );
+
+        if (System::where('id', $id)->update($data)) {
+            return redirect("/backend/setting");
+        }else{
+            $setting->system_value = $val;
+            return view('backend.setting.edit')->with("setting",$setting);
+        }
+    }
 }

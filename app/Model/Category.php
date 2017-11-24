@@ -11,12 +11,7 @@ class Category extends Model
 
 
     protected $fillable = [
-        'cate_name',
-        'as_name',
-        'parent_id',
-        'seo_title',
-        'seo_key',
-        'seo_desc',
+        'name',
     ];
 
     static $catData = [
@@ -45,11 +40,11 @@ class Category extends Model
     private static function getCategoryArr($catId)
     {
         if (!isset(self::$category[$catId])) {
-            $cate = self::select('cate_name')->find($catId);
+            $cate = self::select('name')->find($catId);
             if (empty($cate)) {
                 return false;
             }
-            self::$category[$catId] = $cate->cate_name;
+            self::$category[$catId] = $cate->name;
         }
         return self::$category[$catId];
     }
@@ -61,26 +56,12 @@ class Category extends Model
     }
 
     /**
-     * 取得树结构的分类数组
-     * @return array
-     */
-    public static function getCategoryTree()
-    {
-        $data = self::getCategoryDataModel();
-        foreach ($data as $k => $v) {
-            self::$catData[$v->id] = $v->html . $v->cate_name;
-        }
-
-        return self::$catData;
-    }
-
-    /**
      * 根据别名取分类信息
      * @param $asName
      * @return mixed
      */
     public static function getCatInfoModelByAsName($asName)
     {
-        return self::where('as_name', '=', $asName)->first();
+        return self::where('name', '=', $asName)->first();
     }
 }

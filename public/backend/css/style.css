@@ -5,7 +5,7 @@ Author: ThemeBucket
 @import url('bootstrap.min.css');
 @import url('bootstrap-reset.css');
 @import url('jquery-ui-1.10.3.css');
-@import url('../fonts/css/font-awesome.min.css');
+@import url('../fonts/font-awesome-4.2.0/css/font-awesome.min.css');
 
 body {
     background: #424f63;

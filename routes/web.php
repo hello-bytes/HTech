@@ -12,14 +12,17 @@
 */
 
 Route::get('/', 'ArticleController@index');
+Route::get('/about', 'AboutController@index');
+Route::get('/search', 'SearchController@index');
 Route::get('/article/{articleId}.html', 'ArticleController@article');
+
 
 Auth::routes();
 
 Route::group(['prefix'=>'backend','middleware'=>'auth'],function(){
 
     Route::any('/','backend\BackendController@index');
-    Route::get('/index', 'backend\BackendController@index');
+    Route::get('/index','backend\BackendController@index');
 
     Route::resource('tag','backend\TagController');
     Route::resource('user','backend\UserController');
