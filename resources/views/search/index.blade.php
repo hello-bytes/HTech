@@ -1,7 +1,7 @@
 @extends('layouts.defaultlayout')
 
 @section('header')
-    <title>关于我们 - {{ postTitle() }}</title>
+    <title>搜索 - {{ postTitle() }}</title>
 @endsection
 
 @section('content')

@@ -11,11 +11,13 @@
 |
 */
 
+Route::get('/setup', 'SetupController@index');
+Route::post('/dosetup', 'SetupController@dosetup');
+
 Route::get('/', 'ArticleController@index');
 Route::get('/about', 'AboutController@index');
 Route::get('/search', 'SearchController@index');
 Route::get('/article/{articleId}.html', 'ArticleController@article');
-
 
 Auth::routes();
 
