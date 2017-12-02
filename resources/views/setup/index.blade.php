@@ -10,8 +10,23 @@
     </div>
     <hr/>
 
+
+
     <div class="container">
         <div class="row">
+            @if($error > 0)
+                <div class="alert alert-danger" role="alert" style="padding: 8px;">
+                @if($error == 1)
+                        账号与密码不能为空
+                @endif
+                @if($error == 2)
+                        账号得是合法的Email地址
+                @endif
+                @if($error == 3)
+                    创建管理员账号失败
+                @endif
+                </div>
+            @endif
             <div style="width: 800px;margin: 0px auto;">
                 <form method="post" action="/dosetup" class="form-horizontal" >
                     {{ csrf_field() }}
@@ -24,7 +39,7 @@
                     <div class="form-group">
                         <label for="account" class="col-sm-2 control-label">管理员账号:</label>
                         <div class="col-sm-6">
-                            <input type="text" value="admin" id="account" class="form-control" name="account" />
+                            <input type="text" value="" id="account" class="form-control" name="account" placeholder="请输入电子邮箱地址" />
                         </div>
                         <div class="col-sm-4">登录后台的账号,请牢记。</div>
                     </div>
@@ -32,7 +47,7 @@
                     <div class="form-group">
                         <label for="password" class="col-sm-2 control-label">管理员密码:</label>
                         <div class="col-sm-6">
-                            <input type="text" value="htech-admin" id="password" class="form-control" name="password" />
+                            <input type="text" value="" id="password" class="form-control" name="password" placeholder="管理员密码" />
                         </div>
                         <div class="col-sm-4">登录密码,请定期修改。</div>
                     </div>

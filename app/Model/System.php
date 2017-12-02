@@ -44,4 +44,24 @@ class System extends Model
         return $result;
     }
 
+    public static function setSystemValue($key,$val){
+        $exist = self::select('system_value')->where('system_name', $key)->where("cate",System::SYSTEM_INFO_TYPE)->get();
+
+        if(!$exist->isEmpty()){
+            $data = array(
+                "id" > $exist[0]->id,
+                'cate' => System::SYSTEM_INFO_TYPE,
+                'system_value' => $val,
+            );
+            self::update($data);
+        }else{
+            $data = array(
+                'cate' => System::SYSTEM_INFO_TYPE,
+                'system_name' => $key,
+                'system_value' => $val,
+            );
+            self::create($data);
+        }
+    }
+
 }
