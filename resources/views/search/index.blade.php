@@ -5,16 +5,10 @@
 @endsection
 
 @section('content')
-    <main id="main" class="main">
-        <div class="main-inner">
-            <div class="content-wrap">
-                <div id="content" class="content">
-                    <div id="posts" class="posts-expand">
-                        Place hold!
-                    </div>
-                </div>
-            </div>
+    <div class="container" style="margin-bottom: 400px;">
+        <div class="row" style="text-align: center;">
+            搜索功能暂未开放。
         </div>
-    </main>
+    </div>
     <br/>
 @endsection
