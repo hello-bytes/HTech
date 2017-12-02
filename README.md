@@ -36,7 +36,7 @@ bash deploy.sh init
 .env文件为系统使用的全局配置文件，配置配置如下所示：
 ```
 APP_ENV=local
-APP_DEBUG=true
+APP_DEBUG=false
 APP_KEY=aaronhtechloghtechnshtechaha23ew
 
 DB_CONNECTION=sqlite
@@ -44,5 +44,19 @@ DB_DATABASE={网站所在目录}/storage/htech.db
 ```
 
 > 上面的配置文件中，{网站所在目录}为您网站的绝对路径。即运行`bash deploy.sh init` 以后，一切的一切都准备好了。
+
+## 设置网站信息
+首次进入网站时，网站会自动跳转到/setup，要求设置管理员账号，密码，网站标题，备案号等信息。建议至少设置管理员账号信息（用户名+密码），网站标题。
+
+> 首次进入网站跳转到/setup的原理为，检查storage目录下有没有inited.config文件，如果没有，就会强制跳转到/setup。同样，当进行setup设置时，会检查文件inited.config是否存在，如果存在，则拒绝进行设置。
+
+首次进入，设置界面如下所示：
+
+![HTech-Setup](https://github.com/Hello-Tech/HelloTech/raw/dev/doc/images/htech-setup-screenshot.png)
+
+## 维护您的博客
+
+至此，博客网站已经完全准备好了。后续您可以通过`/login`进入到您的管理后台以管理您的博客。
+
 
 
